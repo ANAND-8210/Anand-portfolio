@@ -58,7 +58,19 @@ header {
   background: rgba(0,0,0,0.4);
   backdrop-filter: blur(10px);
 }
+.logo img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #00f7ff;
+  box-shadow: 0 0 10px #00f7ff;
+  transition: 0.3s;
+}
 
+.logo img:hover {
+  transform: scale(1.1);
+}
 /* LOGO */
 .logo {
   font-size: 28px;
