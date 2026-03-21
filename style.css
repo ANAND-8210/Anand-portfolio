@@ -1,4 +1,3 @@
-/* RESET */
 *{
   margin:0;
   padding:0;
@@ -6,7 +5,6 @@
   font-family:'Poppins',sans-serif;
 }
 
-/* BODY */
 body{
   background:url('back1.jpg') no-repeat center;
   background-size:cover;
@@ -14,29 +12,24 @@ body{
   color:white;
 }
 
-/* 🔥 Brightness Increase */
+/* 🔥 brightness increase */
 body::before{
   content:"";
   position:fixed;
   width:100%;
   height:100%;
-  background:rgba(0,0,0,0.3); /* pehle 0.5 tha */
+  background:rgba(0,0,0,0.3);
   z-index:-1;
 }
 
-/* 🔥 3D RING */
+/* 🔥 SAFE RING */
 .ring-container{
   position:fixed;
   top:50%;
   left:50%;
   transform:translate(-50%,-50%);
-  z-index:0;
+  z-index:-2;
   pointer-events:none;
-}
-
-.ring{
-  position:relative;
-  transform-style:preserve-3d;
 }
 
 .circle{
@@ -45,22 +38,29 @@ body::before{
   aspect-ratio:1;
   border-radius:50%;
   border:2px solid #00ff0d;
-
-  transform:rotateX(70deg) translateZ(40px);
-
-  animation:animate 3s ease-in-out calc(var(--i)*0.08s) infinite;
-
-  box-shadow:0 0 10px #00ff0d;
+  transform:rotateX(70deg) translateZ(30px);
+  animation:animate 3s ease-in-out infinite;
+  opacity:0.4;
 }
 
 @keyframes animate{
-  0%,100%{
-    transform:rotateX(70deg) translateZ(40px) translateY(0);
-  }
   50%{
-    transform:rotateX(70deg) translateZ(40px) translateY(-40vmin);
-    filter:hue-rotate(360deg);
+    transform:rotateX(70deg) translateZ(30px) translateY(-30vmin);
   }
+}
+
+/* HEADER */
+header{
+  display:flex;
+  justify-content:space-between;
+  padding:15px;
+  background:rgba(0,0,0,0.5);
+}
+
+nav ul{
+  display:flex;
+  gap:15px;
+  list-style:none;
 }
 
 /* HERO */
@@ -71,30 +71,34 @@ body::before{
   align-items:center;
   text-align:center;
   position:relative;
-  z-index:1;
+  z-index:2;
 }
 
 .hero h1{
-  font-size:60px;
+  font-size:50px;
 }
 
 /* CARDS */
-.skill-card,.project-card{
-  background:rgba(255,255,255,0.1);
-  padding:20px;
-  margin:10px;
-  border-radius:15px;
-  backdrop-filter:blur(10px);
+.skills-container,.projects-container{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
 }
 
-/* MOBILE FIX */
+.skill-card,.project-card{
+  padding:20px;
+  margin:10px;
+  background:rgba(255,255,255,0.1);
+  border-radius:10px;
+}
+
+/* MOBILE */
 @media(max-width:768px){
+  .hero h1{
+    font-size:30px;
+  }
 
   .circle{
     width:calc(var(--i)*3vmin);
-  }
-
-  .hero h1{
-    font-size:32px;
   }
 }
