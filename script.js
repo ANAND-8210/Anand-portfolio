@@ -1,78 +1,137 @@
+// ================================
+// 🔹 Run After Page Load
+// ================================
 document.addEventListener("DOMContentLoaded", () => {
 
-  // 🔹 Smooth Scroll Button
+  // ================================
+  // 🔹 Smooth Scroll to Projects
+  // ================================
   window.scrollToProjects = function () {
-    document.getElementById("projects").scrollIntoView({
-      behavior: "smooth"
-    });
+    const section = document.getElementById("projects");
+    if (section) {
+      section.scrollIntoView({
+        behavior: "smooth"
+      });
+    }
   };
 
-  // 🔹 Typing Effect
-  const text = ["Creative Developer 💻", "Video Artist 🎬", "UI Designer 🎨"];
-  let i = 0, j = 0;
+  // ================================
+  // 🔹 Typing Effect (Hero Section)
+  // ================================
+  const texts = [
+    "Creative Developer 💻",
+    "Video Artist 🎬",
+    "UI Designer 🎨"
+  ];
+
+  let i = 0;
+  let j = 0;
   let currentText = "";
   let isDeleting = false;
 
-  function type() {
+  function typingEffect() {
     const typing = document.getElementById("typing");
-
     if (!typing) return;
 
-    if (i < text.length) {
-      if (!isDeleting && j <= text[i].length) {
-        currentText = text[i].substring(0, j++);
-      } else if (isDeleting && j >= 0) {
-        currentText = text[i].substring(0, j--);
-      }
-
-      typing.innerHTML = currentText;
-
-      if (j === text[i].length) isDeleting = true;
-      if (j === 0) {
-        isDeleting = false;
-        i = (i + 1) % text.length;
-      }
+    if (!isDeleting && j <= texts[i].length) {
+      currentText = texts[i].substring(0, j++);
+    } 
+    else if (isDeleting && j >= 0) {
+      currentText = texts[i].substring(0, j--);
     }
 
-    setTimeout(type, isDeleting ? 50 : 100);
+    typing.innerHTML = currentText;
+
+    if (j === texts[i].length) {
+      isDeleting = true;
+      setTimeout(typingEffect, 1000);
+      return;
+    }
+
+    if (j === 0) {
+      isDeleting = false;
+      i = (i + 1) % texts.length;
+    }
+
+    setTimeout(typingEffect, isDeleting ? 50 : 100);
   }
 
-  type();
+  typingEffect();
 
-  // 🔹 Background Reveal
+  // ================================
+  // 🔹 Background Image Reveal Effect
+  // ================================
   const layer1 = document.getElementById("layer1");
   const layer2 = document.getElementById("layer2");
 
   const images = ["back1.jpg", "back2.jpg", "back3.jpg", "back4.jpg"];
 
   let index = 0;
-  let active = 1;
+  let activeLayer = 1;
 
   if (layer1 && layer2) {
+
     layer1.style.backgroundImage = `url(${images[0]})`;
+    layer2.style.opacity = 0;
+
+    // Mobile ke liye slow, PC ke liye fast
+    const intervalTime = window.innerWidth < 768 ? 5000 : 3000;
 
     setInterval(() => {
       index = (index + 1) % images.length;
 
-      if (active === 1) {
+      if (activeLayer === 1) {
         layer2.style.backgroundImage = `url(${images[index]})`;
         layer2.style.opacity = 1;
         layer1.style.opacity = 0;
-        active = 2;
+        activeLayer = 2;
       } else {
         layer1.style.backgroundImage = `url(${images[index]})`;
         layer1.style.opacity = 1;
         layer2.style.opacity = 0;
-        active = 1;
+        activeLayer = 1;
       }
-    }, 4000);
+    }, intervalTime);
   }
 
-  // 🔹 3D Card Effect
-  document.querySelectorAll(".project-card, .skill-card").forEach(card => {
+  // ================================
+  // 🔹 Mouse Reveal Effect
+  // ================================
+  let mouseX = 0;
+  let mouseY = 0;
+
+  document.addEventListener("mousemove", (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+  });
+
+  function animateMask() {
+    if (layer1 && layer2 && window.innerWidth > 768) {
+
+      const mask = `radial-gradient(circle 120px at ${mouseX}px ${mouseY}px, transparent 0%, black 100%)`;
+
+      layer1.style.maskImage = mask;
+      layer2.style.maskImage = mask;
+
+      layer1.style.webkitMaskImage = mask;
+      layer2.style.webkitMaskImage = mask;
+    }
+
+    requestAnimationFrame(animateMask);
+  }
+
+  animateMask();
+
+  // ================================
+  // 🔹 3D Card Hover Effect
+  // ================================
+  const cards = document.querySelectorAll(".project-card, .skill-card");
+
+  cards.forEach(card => {
 
     card.addEventListener("mousemove", (e) => {
       const rect = card.getBoundingClientRect();
+
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
 
@@ -87,9 +146,25 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     card.addEventListener("mouseleave", () => {
-      card.style.transform = "rotateX(0) rotateY(0)";
+      card.style.transform = "rotateX(0) rotateY(0) scale(1)";
     });
 
+  });
+
+  // ================================
+  // 🔹 Navbar Smooth Scroll
+  // ================================
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener("click", function (e) {
+      e.preventDefault();
+
+      const target = document.querySelector(this.getAttribute("href"));
+      if (target) {
+        target.scrollIntoView({
+          behavior: "smooth"
+        });
+      }
+    });
   });
 
 });
