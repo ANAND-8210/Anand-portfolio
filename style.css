@@ -1,3 +1,6 @@
+/* ================================
+   🔹 RESET
+================================ */
 *{
   margin:0;
   padding:0;
@@ -5,65 +8,132 @@
   font-family:'Poppins',sans-serif;
 }
 
-body{
-  background:url('back1.jpg') no-repeat center;
-  background-size:cover;
-  background-attachment:fixed;
-  color:white;
+html{
+  scroll-behavior:smooth;
 }
 
-/* 🔥 brightness increase */
-body::before{
-  content:"";
+/* ================================
+   🔥 BACKGROUND SLIDER (NEW)
+================================ */
+.bg-slider{
   position:fixed;
   width:100%;
   height:100%;
-  background:rgba(0,0,0,0.3);
-  z-index:-1;
+  z-index:-2;
 }
 
-/* 🔥 SAFE RING */
+.slide{
+  position:absolute;
+  width:100%;
+  height:100%;
+  background-size:cover;
+  background-position:center;
+  opacity:0;
+  transition:opacity 2s ease-in-out;
+}
+
+.slide.active{
+  opacity:1;
+}
+
+/* 🔥 brightness (improved) */
+.bg-slider::after{
+  content:"";
+  position:absolute;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.25);
+  z-index:1;
+}
+
+/* ================================
+   🔹 BODY REMOVE OLD BG
+================================ */
+body{
+  color:white;
+  overflow-x:hidden;
+}
+
+/* ================================
+   🔹 LOGO FIX
+================================ */
+.logo{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.logo img{
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  object-fit:cover;
+}
+
+/* ================================
+   🔹 RING PERFECT FIX
+================================ */
 .ring-container{
-  position:fixed;
+  position:absolute;
   top:50%;
   left:50%;
   transform:translate(-50%,-50%);
-  z-index:-2;
   pointer-events:none;
+  z-index:0;
+}
+
+.ring{
+  position:relative;
 }
 
 .circle{
   position:absolute;
-  width:calc(var(--i)*2vmin);
+  width:calc(var(--i)*3vmin);
   aspect-ratio:1;
   border-radius:50%;
   border:2px solid #00ff0d;
-  transform:rotateX(70deg) translateZ(30px);
-  animation:animate 3s ease-in-out infinite;
+
+  animation:float 4s ease-in-out infinite;
+
+  box-shadow:0 0 15px #00ff0d;
   opacity:0.4;
 }
 
-@keyframes animate{
+@keyframes float{
+  0%,100%{
+    transform:translateY(0);
+  }
   50%{
-    transform:rotateX(70deg) translateZ(30px) translateY(-30vmin);
+    transform:translateY(-15px);
   }
 }
 
-/* HEADER */
+/* ================================
+   🔹 HEADER
+================================ */
 header{
   display:flex;
   justify-content:space-between;
-  padding:15px;
+  align-items:center;
+  padding:15px 30px;
   background:rgba(0,0,0,0.5);
+  backdrop-filter:blur(10px);
 }
 
 nav ul{
   display:flex;
-  gap:15px;
+  gap:20px;
   list-style:none;
 }
 
-/* HERO */
+nav a{
+  color:white;
+  text-decoration:none;
+}
+
+/* ================================
+   🔹 HERO CENTER FIX
+================================ */
 .hero{
   height:100vh;
   display:flex;
@@ -71,14 +141,45 @@ nav ul{
   align-items:center;
   text-align:center;
   position:relative;
+}
+
+.hero-content{
   z-index:2;
 }
 
 .hero h1{
-  font-size:50px;
+  font-size:55px;
 }
 
-/* CARDS */
+.hero p{
+  font-size:18px;
+}
+
+/* ================================
+   🔥 BUTTON (3D GLASS)
+================================ */
+button, .btn{
+  padding:12px 25px;
+  border-radius:25px;
+  border:1px solid rgba(255,255,255,0.3);
+
+  background:rgba(255,255,255,0.1);
+  backdrop-filter:blur(10px);
+
+  color:white;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+button:hover, .btn:hover{
+  transform:translateY(-3px) scale(1.05);
+  background:rgba(255,255,255,0.2);
+  box-shadow:0 10px 20px rgba(0,0,0,0.5);
+}
+
+/* ================================
+   🔹 CARDS
+================================ */
 .skills-container,.projects-container{
   display:flex;
   flex-wrap:wrap;
@@ -88,17 +189,63 @@ nav ul{
 .skill-card,.project-card{
   padding:20px;
   margin:10px;
+  width:220px;
   background:rgba(255,255,255,0.1);
-  border-radius:10px;
+  border-radius:15px;
+  backdrop-filter:blur(10px);
+  transition:0.3s;
 }
 
-/* MOBILE */
+.skill-card:hover,.project-card:hover{
+  transform:translateY(-10px) scale(1.05);
+}
+
+/* ================================
+   🔹 ABOUT CENTER FIX (NEW)
+================================ */
+.about{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:80px 20px;
+}
+
+.about-box{
+  max-width:600px;
+}
+
+/* ================================
+   🔹 PROJECT CENTER FIX (NEW)
+================================ */
+#projects{
+  text-align:center;
+  padding:60px 20px;
+}
+
+/* ================================
+   🔹 MOBILE FIX
+================================ */
 @media(max-width:768px){
+
+  header{
+    flex-direction:column;
+    gap:10px;
+  }
+
   .hero h1{
-    font-size:30px;
+    font-size:32px;
+  }
+
+  .hero p{
+    font-size:14px;
   }
 
   .circle{
-    width:calc(var(--i)*3vmin);
+    width:calc(var(--i)*4vmin);
+  }
+
+  .skill-card,.project-card{
+    width:90%;
   }
 }

@@ -2,122 +2,108 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Anand Gupta Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <!-- CSS -->
   <link rel="stylesheet" href="style.css">
+
+  <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-<!-- 🔥 SUBTLE RING BACKGROUND -->
-<div class="ring-container">
-  <div class="ring">
-    <div class="circle" style="--i:1;"></div>
-    <div class="circle" style="--i:2;"></div>
-    <div class="circle" style="--i:3;"></div>
-    <div class="circle" style="--i:4;"></div>
-    <div class="circle" style="--i:5;"></div>
-    <div class="circle" style="--i:6;"></div>
-    <div class="circle" style="--i:7;"></div>
-    <div class="circle" style="--i:8;"></div>
-  </div>
+<!-- 🔥 BACKGROUND SLIDER (4 IMAGES) -->
+<div class="bg-slider">
+  <div class="slide active" style="background-image:url('back1.jpg')"></div>
+  <div class="slide" style="background-image:url('back2.jpg')"></div>
+  <div class="slide" style="background-image:url('back3.jpg')"></div>
+  <div class="slide" style="background-image:url('back4.jpg')"></div>
 </div>
-
-<!-- 🔹 Background -->
-<div class="image-reveal">
-  <div class="reveal-layer" id="layer1"></div>
-  <div class="reveal-layer" id="layer2"></div>
-</div>
-
-<!-- 🔹 Header -->
+<!-- 🔹 HEADER -->
 <header>
   <div class="logo">
-    <img src="logo.jpg">
-    <span>Anand</span>
+    <img src="logo.jpg" alt="logo">
+    <h2>Anand Gupta</h2>
   </div>
 
   <nav>
     <ul>
       <li><a href="#home">Home</a></li>
       <li><a href="#about">About</a></li>
-      <li><a href="#skills">Skills</a></li>
       <li><a href="#projects">Projects</a></li>
-      <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
 </header>
 
-<!-- 🔹 Hero -->
+<!-- 🔹 HERO SECTION -->
 <section id="home" class="hero">
+
+  <!-- 🔥 RING EFFECT -->
+  <div class="ring-container">
+    <div class="circle" style="--i:1;"></div>
+    <div class="circle" style="--i:2;"></div>
+    <div class="circle" style="--i:3;"></div>
+    <div class="circle" style="--i:4;"></div>
+  </div>
+
   <div class="hero-content">
-    <h2>Hello 👋</h2>
-    <h1>I am <span class="highlight">Anand Gupta</span></h1>
-    <p id="typing"></p>
 
-    <button onclick="scrollToProjects()">View My Work</button>
-    <br><br>
+    <!-- PROFILE IMAGE -->
+    <img src="profile.jpg" class="profile-img">
 
-    <a href="anand-resume.pdf" target="_blank" class="btn">📄 View Resume</a>
+    <h1>Hello, I'm Anand 👋</h1>
+    <h3>Web Developer | Creative Designer</h3>
+
+    <!-- BUTTON CENTER -->
+    <div class="btn-center">
+      <button onclick="scrollToProjects()">View Projects</button>
+    </div>
+
+    <!-- SOCIAL LINKS -->
+    <div class="social">
+      <a href="https://github.com/ANAND-8210" target="_blank">GitHub</a>
+      <a href="https://www.instagram.com/anand_gupta8409" target="_blank">Instagram</a>
+    </div>
+
   </div>
 </section>
 
-<!-- 🔹 About -->
-<section id="about">
-  <h2>About Me</h2>
-  <p>
-    I am Anand Gupta, a creative developer and video artist who loves building interactive and visually stunning web experiences.
-  </p>
-</section>
-
-<!-- 🔹 Skills -->
-<section id="skills">
-  <h2>Skills</h2>
-  <div class="skills-container">
-    <div class="skill-card">HTML</div>
-    <div class="skill-card">CSS</div>
-    <div class="skill-card">JavaScript</div>
-    <div class="skill-card">Video Editing</div>
-    <div class="skill-card">Creative Design</div>
+<!-- 🔹 ABOUT SECTION -->
+<section id="about" class="about">
+  <div class="about-box">
+    <h2>About Me</h2>
+    <p>
+      I am Anand Gupta, a passionate web developer and creative designer.
+      I love building modern UI/UX websites with smooth animations and clean design.
+    </p>
   </div>
 </section>
 
-<!-- 🔹 Projects -->
+<!-- 🔹 PROJECT SECTION -->
 <section id="projects">
-  <h2>Projects</h2>
+  <h2>My Projects</h2>
 
   <div class="projects-container">
 
     <div class="project-card">
-      <a href="Project_Report-1.pdf" target="_blank">🎯 View Project</a>
-      <h3>Project 1</h3>
+      <a href="Project_Report-1.pdf">📄 My Project</a>
     </div>
 
     <div class="project-card">
-      <a href="https://github.com/ANAND-8210" target="_blank">🚀 GitHub</a>
-      <h3>GitHub Profile</h3>
+      <a href="https://github.com/ANAND-8210">💻 GitHub</a>
     </div>
 
     <div class="project-card">
-      <a href="https://www.instagram.com/anand_gupta8409" target="_blank">📸 Instagram</a>
-      <h3>Instagram</h3>
+      <a href="https://www.instagram.com/anand_gupta8409">📸 Instagram</a>
     </div>
 
   </div>
 </section>
 
-<!-- 🔹 Contact -->
-<section id="contact">
-  <h2>Contact Me</h2>
-  <p>Email: <a href="mailto:subnysonkar1888@gmail.com">subnysonkar1888@gmail.com</a></p>
-</section>
-
-<!-- 🔹 Footer -->
-<footer>
-  <p>© 2026 Anand Gupta</p>
-</footer>
-
+<!-- JS -->
 <script src="script.js"></script>
+
 </body>
 </html>

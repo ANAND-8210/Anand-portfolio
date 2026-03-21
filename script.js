@@ -2,22 +2,22 @@
 // 🔹 Run After Page Load
 // ================================
 document.addEventListener("DOMContentLoaded", () => {
-// Background brightness smooth feel
-document.body.style.transition = "background 0.5s ease";
+
+  // 🔥 Smooth feel
+  document.body.style.transition = "background 0.5s ease";
+
   // ================================
   // 🔹 Smooth Scroll to Projects
   // ================================
   window.scrollToProjects = function () {
     const section = document.getElementById("projects");
     if (section) {
-      section.scrollIntoView({
-        behavior: "smooth"
-      });
+      section.scrollIntoView({ behavior: "smooth" });
     }
   };
 
   // ================================
-  // 🔹 Typing Effect (Hero Section)
+  // 🔹 Typing Effect
   // ================================
   const texts = [
     "Creative Developer 💻",
@@ -25,8 +25,7 @@ document.body.style.transition = "background 0.5s ease";
     "UI Designer 🎨"
   ];
 
-  let i = 0;
-  let j = 0;
+  let i = 0, j = 0;
   let currentText = "";
   let isDeleting = false;
 
@@ -36,8 +35,7 @@ document.body.style.transition = "background 0.5s ease";
 
     if (!isDeleting && j <= texts[i].length) {
       currentText = texts[i].substring(0, j++);
-    } 
-    else if (isDeleting && j >= 0) {
+    } else if (isDeleting && j >= 0) {
       currentText = texts[i].substring(0, j--);
     }
 
@@ -60,43 +58,21 @@ document.body.style.transition = "background 0.5s ease";
   typingEffect();
 
   // ================================
-  // 🔹 Background Image Reveal Effect
+  // 🔥 BACKGROUND SLIDER (FIXED)
   // ================================
-  const layer1 = document.getElementById("layer1");
-  const layer2 = document.getElementById("layer2");
-
-  const images = ["back1.jpg", "back2.jpg", "back3.jpg", "back4.jpg"];
-
+  const slides = document.querySelectorAll(".slide");
   let index = 0;
-  let activeLayer = 1;
 
-  if (layer1 && layer2) {
-
-    layer1.style.backgroundImage = `url(${images[0]})`;
-    layer2.style.opacity = 0;
-
-    // Mobile ke liye slow, PC ke liye fast
-    const intervalTime = window.innerWidth < 768 ? 5000 : 3000;
-
+  if (slides.length > 0) {
     setInterval(() => {
-      index = (index + 1) % images.length;
-
-      if (activeLayer === 1) {
-        layer2.style.backgroundImage = `url(${images[index]})`;
-        layer2.style.opacity = 1;
-        layer1.style.opacity = 0;
-        activeLayer = 2;
-      } else {
-        layer1.style.backgroundImage = `url(${images[index]})`;
-        layer1.style.opacity = 1;
-        layer2.style.opacity = 0;
-        activeLayer = 1;
-      }
-    }, intervalTime);
+      slides[index].classList.remove("active");
+      index = (index + 1) % slides.length;
+      slides[index].classList.add("active");
+    }, window.innerWidth < 768 ? 5000 : 3000);
   }
 
   // ================================
-  // 🔹 Mouse Reveal Effect
+  // 🔹 Mouse Reveal Effect (SAFE)
   // ================================
   let mouseX = 0;
   let mouseY = 0;
@@ -107,6 +83,9 @@ document.body.style.transition = "background 0.5s ease";
   });
 
   function animateMask() {
+    const layer1 = document.getElementById("layer1");
+    const layer2 = document.getElementById("layer2");
+
     if (layer1 && layer2 && window.innerWidth > 768) {
 
       const mask = `radial-gradient(circle 120px at ${mouseX}px ${mouseY}px, transparent 0%, black 100%)`;
@@ -161,9 +140,7 @@ document.body.style.transition = "background 0.5s ease";
 
       const target = document.querySelector(this.getAttribute("href"));
       if (target) {
-        target.scrollIntoView({
-          behavior: "smooth"
-        });
+        target.scrollIntoView({ behavior: "smooth" });
       }
     });
   });
