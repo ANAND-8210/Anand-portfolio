@@ -1,203 +1,100 @@
-/* ================================
-   🔹 RESET
-================================ */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+/* RESET */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
 }
 
-html {
-  scroll-behavior: smooth;
+/* BODY */
+body{
+  background:url('back1.jpg') no-repeat center;
+  background-size:cover;
+  background-attachment:fixed;
+  color:white;
 }
 
-/* ================================
-   🔹 BODY + BACKGROUND FIX
-================================ */
-body {
-  background: url('back1.jpg') no-repeat center center;
-  background-size: cover;
-  background-attachment: fixed;
-  color: white;
-  overflow-x: hidden;
+/* 🔥 Brightness Increase */
+body::before{
+  content:"";
+  position:fixed;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.3); /* pehle 0.5 tha */
+  z-index:-1;
 }
 
-/* Mobile par background fix */
-@media (max-width: 768px) {
-  body {
-    background-attachment: scroll;
+/* 🔥 3D RING */
+.ring-container{
+  position:fixed;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  z-index:0;
+  pointer-events:none;
+}
+
+.ring{
+  position:relative;
+  transform-style:preserve-3d;
+}
+
+.circle{
+  position:absolute;
+  width:calc(var(--i)*2vmin);
+  aspect-ratio:1;
+  border-radius:50%;
+  border:2px solid #00ff0d;
+
+  transform:rotateX(70deg) translateZ(40px);
+
+  animation:animate 3s ease-in-out calc(var(--i)*0.08s) infinite;
+
+  box-shadow:0 0 10px #00ff0d;
+}
+
+@keyframes animate{
+  0%,100%{
+    transform:rotateX(70deg) translateZ(40px) translateY(0);
+  }
+  50%{
+    transform:rotateX(70deg) translateZ(40px) translateY(-40vmin);
+    filter:hue-rotate(360deg);
   }
 }
 
-/* DARK OVERLAY */
-body::before {
-  content: "";
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.5);
-  z-index: -1;
+/* HERO */
+.hero{
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  position:relative;
+  z-index:1;
 }
 
-/* ================================
-   🔹 BACKGROUND REVEAL FIX
-================================ */
-.image-reveal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -2;
+.hero h1{
+  font-size:60px;
 }
 
-.reveal-layer {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center;
-  transition: opacity 1s ease;
+/* CARDS */
+.skill-card,.project-card{
+  background:rgba(255,255,255,0.1);
+  padding:20px;
+  margin:10px;
+  border-radius:15px;
+  backdrop-filter:blur(10px);
 }
 
-/* ================================
-   🔹 HEADER (Responsive)
-================================ */
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 30px;
-  background: rgba(0,0,0,0.5);
-  backdrop-filter: blur(10px);
-}
+/* MOBILE FIX */
+@media(max-width:768px){
 
-/* Logo */
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.logo img {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-}
-
-/* NAV */
-nav ul {
-  display: flex;
-  gap: 20px;
-  list-style: none;
-}
-
-nav a {
-  color: white;
-  text-decoration: none;
-}
-
-/* ================================
-   🔹 HERO (Responsive Fix)
-================================ */
-.hero {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 20px;
-}
-
-.hero h1 {
-  font-size: 60px;
-}
-
-.hero p {
-  font-size: 20px;
-}
-
-/* ================================
-   🔹 BUTTON
-================================ */
-button, .btn {
-  padding: 10px 20px;
-  border-radius: 20px;
-  background: linear-gradient(45deg, #ff00ff, #00ffff);
-  border: none;
-  color: white;
-  text-decoration: none;
-}
-
-/* ================================
-   🔹 CARDS
-================================ */
-.skills-container,
-.projects-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.skill-card,
-.project-card {
-  width: 220px;
-  padding: 20px;
-  margin: 10px;
-  border-radius: 15px;
-  background: rgba(255,255,255,0.1);
-}
-
-/* ================================
-   🔹 MOBILE RESPONSIVE 🔥
-================================ */
-@media (max-width: 768px) {
-
-  /* Header */
-  header {
-    flex-direction: column;
-    gap: 10px;
+  .circle{
+    width:calc(var(--i)*3vmin);
   }
 
-  nav ul {
-    flex-wrap: wrap;
-    justify-content: center;
+  .hero h1{
+    font-size:32px;
   }
-
-  /* Hero */
-  .hero h1 {
-    font-size: 35px;
-  }
-
-  .hero p {
-    font-size: 16px;
-  }
-
-  /* Cards */
-  .skill-card,
-  .project-card {
-    width: 90%;
-  }
-
-  /* Sections padding */
-  section {
-    padding: 60px 15px;
-  }
-
-}
-
-/* ================================
-   🔹 SMALL MOBILE
-================================ */
-@media (max-width: 480px) {
-
-  .hero h1 {
-    font-size: 28px;
-  }
-
-  .hero p {
-    font-size: 14px;
-  }
-
 }

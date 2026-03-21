@@ -2,7 +2,8 @@
 // 🔹 Run After Page Load
 // ================================
 document.addEventListener("DOMContentLoaded", () => {
-
+// Background brightness smooth feel
+document.body.style.transition = "background 0.5s ease";
   // ================================
   // 🔹 Smooth Scroll to Projects
   // ================================
