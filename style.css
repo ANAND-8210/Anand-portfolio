@@ -942,7 +942,7 @@ button:hover,
   height:100%;
   display:block;
   object-fit:cover;
-  object-position:50% var(--focus-y, 18%);
+  object-position:var(--focus-x, 50%) var(--focus-y, 18%);
   border-radius:18px;
   border:1px solid rgba(255,255,255,0.12);
   box-shadow:
