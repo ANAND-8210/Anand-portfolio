@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="style.css">
 
   <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -25,7 +25,7 @@
 <!-- HEADER -->
 <header>
   <div class="logo">
-    <img src="logo.jpg" alt="logo">
+    <img src="logo.jpg" alt="Anand Gupta logo">
     <h2>Anand Gupta</h2>
   </div>
 
@@ -33,6 +33,7 @@
     <ul>
       <li><a href="#home">Home</a></li>
       <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
       <li><a href="#projects">Projects</a></li>
     </ul>
   </nav>
@@ -47,45 +48,260 @@
     <div class="circle" style="--i:4;"></div>
   </div>
 
-  <div class="hero-content">
-    <h1>Hello, I'm Anand</h1>
-    <h3>Web Developer | Creative Designer</h3>
+  <div class="hero-layout">
+    <div class="hero-content">
+      <span class="section-tag hero-tag">Portfolio 2026</span>
+      <h1>Hello, I'm Anand</h1>
+      <h3><span id="typing">Creative Developer</span></h3>
+      <p class="hero-copy">
+        I create responsive websites with clean structure, bold styling, and a creative
+        point of view shaped by design, video editing, and digital art.
+      </p>
 
-    <div class="hero-actions">
-      <a href="anand-resume.pdf" target="_blank" rel="noopener noreferrer" class="btn">View Resume</a>
-      <a href="https://github.com/ANAND-8210" target="_blank" rel="noopener noreferrer" class="btn">GitHub</a>
-      <a href="https://www.instagram.com/anand_gupta8409" target="_blank" rel="noopener noreferrer" class="btn">Instagram</a>
+      <div class="hero-actions">
+        <button type="button" class="btn about-btn" onclick="openAbout()">About Me</button>
+        <a href="anand-resume.pdf" target="_blank" rel="noopener noreferrer" class="btn">View Resume</a>
+        <a href="https://github.com/ANAND-8210" target="_blank" rel="noopener noreferrer" class="btn">GitHub</a>
+        <a href="https://www.instagram.com/anand_gupta8409" target="_blank" rel="noopener noreferrer" class="btn">Instagram</a>
+      </div>
+
+      <div class="hero-metrics">
+        <div class="metric-card">
+          <strong>Front-End Focus</strong>
+          <span>Responsive layouts and modern UI</span>
+        </div>
+        <div class="metric-card">
+          <strong>Creative Edge</strong>
+          <span>Visual storytelling and motion ideas</span>
+        </div>
+        <div class="metric-card">
+          <strong>Career Goal</strong>
+          <span>Developer and creative artist</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="profile-orbit orbit-one"></div>
+      <div class="profile-orbit orbit-two"></div>
+
+      <div class="profile-card reveal-card">
+        <div class="profile-image-wrap">
+          <img src="logo.jpg" alt="Anand Gupta profile photo" class="profile-image">
+        </div>
+        <div class="profile-copy">
+          <span>Available for creative web projects</span>
+          <strong>BCA Student | Developer | Artist</strong>
+          <p>Turning ideas into polished digital experiences with personality.</p>
+        </div>
+      </div>
+
+      <div class="floating-note note-one">UI + Motion</div>
+      <div class="floating-note note-two">Responsive Build</div>
     </div>
   </div>
 </section>
 
 <!-- ABOUT SECTION -->
 <section id="about" class="about">
-  <div class="about-box">
-    <h2>About Me</h2>
-    <p>
-      I am Anand Gupta, a passionate web developer and creative designer.
-      I love building modern UI/UX websites with smooth animations and clean design.
+  <div class="about-box reveal-card">
+    <div class="about-copy">
+      <span class="section-tag">About Anand</span>
+      <h2>Building elegant websites with a creative edge.</h2>
+      <p>
+        I am Anand Gupta, a BCA student and passionate web developer who enjoys shaping
+        modern, responsive websites with HTML, CSS, and JavaScript. I also bring a
+        creative mindset through video editing and digital art, which helps me design
+        work that feels both polished and personal.
+      </p>
+
+      <div class="about-highlights">
+        <span>Responsive UI</span>
+        <span>Creative Design</span>
+        <span>Video Editing</span>
+        <span>Digital Art</span>
+      </div>
+
+      <button type="button" class="btn about-btn" onclick="openAbout()">Open Full Profile</button>
+    </div>
+
+    <div class="about-side">
+      <div class="about-stat">
+        <strong>Creative Stack</strong>
+        <span>HTML, CSS, JavaScript, digital editing</span>
+      </div>
+      <div class="about-stat">
+        <strong>Work Style</strong>
+        <span>Modern, expressive, and detail-focused</span>
+      </div>
+      <div class="about-stat">
+        <strong>Long-Term Vision</strong>
+        <span>Build a career in development and visual creativity</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT POPUP -->
+<div id="aboutPopup" class="popup" aria-hidden="true">
+  <div class="popup-content" role="dialog" aria-modal="true" aria-labelledby="aboutPopupTitle">
+    <button type="button" class="close-btn" onclick="closeAbout()" aria-label="Close about popup">Close</button>
+
+    <div class="popup-top">
+      <img src="logo.jpg" alt="Anand Gupta portrait" class="popup-avatar">
+      <div>
+        <span class="popup-kicker">Creative Developer Profile</span>
+        <h2 id="aboutPopupTitle">About Me</h2>
+      </div>
+    </div>
+
+    <p class="popup-text">
+      Hi, I'm Anand Gupta. I am a BCA student and a passionate web developer who loves
+      creating modern and responsive websites using HTML, CSS, and JavaScript.
     </p>
+    <p class="popup-text">
+      I am also deeply interested in creative fields like video editing and digital art.
+      My goal is to grow into a professional developer and creative artist while building
+      work that feels fresh, expressive, and memorable.
+    </p>
+
+    <div class="popup-grid">
+      <div class="popup-card">
+        <span>Focus</span>
+        <strong>Modern front-end websites</strong>
+      </div>
+      <div class="popup-card">
+        <span>Strength</span>
+        <strong>Creative visual storytelling</strong>
+      </div>
+      <div class="popup-card">
+        <span>Tools</span>
+        <strong>HTML, CSS, JavaScript</strong>
+      </div>
+      <div class="popup-card">
+        <span>Goal</span>
+        <strong>Professional developer and artist</strong>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SKILLS SECTION -->
+<section id="skills" class="skills">
+  <div class="section-heading">
+    <span class="section-tag">Skills</span>
+    <h2>Creative technology with strong foundations.</h2>
+    <p>
+      I enjoy combining clean code with expressive design so each section feels clear,
+      polished, and memorable.
+    </p>
+  </div>
+
+  <div class="skills-container">
+    <article class="skill-card reveal-card">
+      <div class="skill-card-head">
+        <span class="skill-number">01</span>
+        <span class="skill-score">92%</span>
+      </div>
+      <h3>HTML Architecture</h3>
+      <p>Semantic sections, clean hierarchy, and portfolio pages that stay structured.</p>
+      <div class="skill-meter"><span style="--level:92%"></span></div>
+    </article>
+
+    <article class="skill-card reveal-card">
+      <div class="skill-card-head">
+        <span class="skill-number">02</span>
+        <span class="skill-score">90%</span>
+      </div>
+      <h3>CSS Styling</h3>
+      <p>Glass effects, layout control, spacing, and strong visual presentation.</p>
+      <div class="skill-meter"><span style="--level:90%"></span></div>
+    </article>
+
+    <article class="skill-card reveal-card">
+      <div class="skill-card-head">
+        <span class="skill-number">03</span>
+        <span class="skill-score">82%</span>
+      </div>
+      <h3>JavaScript Interaction</h3>
+      <p>Animation, toggles, popups, hover effects, and smooth user interactions.</p>
+      <div class="skill-meter"><span style="--level:82%"></span></div>
+    </article>
+
+    <article class="skill-card reveal-card">
+      <div class="skill-card-head">
+        <span class="skill-number">04</span>
+        <span class="skill-score">88%</span>
+      </div>
+      <h3>Creative Editing</h3>
+      <p>Video editing, digital art, and visual composition that strengthen the brand.</p>
+      <div class="skill-meter"><span style="--level:88%"></span></div>
+    </article>
   </div>
 </section>
 
 <!-- PROJECT SECTION -->
-<section id="projects">
-  <h2>My Projects</h2>
+<section id="projects" class="projects">
+  <div class="section-heading">
+    <span class="section-tag">Projects</span>
+    <h2>Work that blends clarity, energy, and presentation.</h2>
+    <p>
+      Each project below highlights a different part of my portfolio, from structured
+      documents to public creative profiles.
+    </p>
+  </div>
 
   <div class="projects-container">
-    <div class="project-card">
-      <a href="Project_Report-1.pdf">My Project</a>
-    </div>
+    <article class="project-card reveal-card">
+      <div class="project-topline">
+        <span>Featured PDF</span>
+        <span>Case Study</span>
+      </div>
+      <h3>Academic Project Report</h3>
+      <p>
+        A complete project document showing planning, structure, and presentation in a
+        polished format.
+      </p>
+      <div class="project-tags">
+        <span>Research</span>
+        <span>Documentation</span>
+      </div>
+      <a href="Project_Report-1.pdf" target="_blank" rel="noopener noreferrer" class="project-link">Open Project</a>
+    </article>
 
-    <div class="project-card">
-      <a href="https://github.com/ANAND-8210">GitHub</a>
-    </div>
+    <article class="project-card reveal-card">
+      <div class="project-topline">
+        <span>Code Portfolio</span>
+        <span>GitHub</span>
+      </div>
+      <h3>Development Showcase</h3>
+      <p>
+        A collection of coding work, experiments, and repositories that show my growth
+        as a developer.
+      </p>
+      <div class="project-tags">
+        <span>Code</span>
+        <span>Learning</span>
+      </div>
+      <a href="https://github.com/ANAND-8210" target="_blank" rel="noopener noreferrer" class="project-link">Visit GitHub</a>
+    </article>
 
-    <div class="project-card">
-      <a href="https://www.instagram.com/anand_gupta8409">Instagram</a>
-    </div>
+    <article class="project-card reveal-card">
+      <div class="project-topline">
+        <span>Creative Feed</span>
+        <span>Instagram</span>
+      </div>
+      <h3>Visual Presence</h3>
+      <p>
+        A social space where I share personality, creativity, and the visual side of my
+        digital work.
+      </p>
+      <div class="project-tags">
+        <span>Brand</span>
+        <span>Visuals</span>
+      </div>
+      <a href="https://www.instagram.com/anand_gupta8409" target="_blank" rel="noopener noreferrer" class="project-link">Open Instagram</a>
+    </article>
   </div>
 </section>
 
