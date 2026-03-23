@@ -949,13 +949,13 @@ button:hover,
   box-shadow:
     0 22px 34px rgba(0,0,0,0.32),
     inset 0 0 0 1px rgba(255,255,255,0.06);
-  transform:translateZ(40px) scale(var(--image-scale, 1.12));
+  transform:translateY(var(--image-shift-y, 0px)) translateZ(40px) scale(var(--image-scale, 1.12));
   transition:transform 0.35s ease, filter 0.35s ease;
   filter:saturate(1.08) contrast(1.04);
 }
 
 .reel-frame:hover img{
-  transform:translateZ(56px) scale(var(--hover-scale, 1.17));
+  transform:translateY(var(--image-shift-y, 0px)) translateZ(56px) scale(var(--hover-scale, 1.17));
   filter:saturate(1.16) contrast(1.08);
 }
 
